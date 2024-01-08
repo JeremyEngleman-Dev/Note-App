@@ -29,6 +29,17 @@ export default function Home() {
     setNotes(notes.filter(e => e.id !== id));
   }
 
+  const saveEdit = (e: userNote) => {
+    const addEdit = notes.map(note => {
+      return note.id === e.id ? {...note,text: e.text} : note;
+    })
+    setNotes(addEdit);
+/*     setNotes({
+      id: e.id,
+      text: e.text
+    }); */
+  }
+
   return (
     <main className={styles.app}>
       <form className={styles.Form} onSubmit={addNote}>
@@ -38,6 +49,7 @@ export default function Home() {
           onChange={e => setNote(e.target.value)}
           value={note}
           placeholder="Enter note here..."
+          maxLength={64}
         />
         <button 
           className={styles.SubmitButton}
@@ -47,7 +59,7 @@ export default function Home() {
       <div className={styles.NoteWindow}>
         {notes.map((e) => {
           return (
-            <Note key={e.id} id={e.id} text={e.text} deleteNote={deleteNote}/>
+            <Note key={e.id} id={e.id} text={e.text} deleteNote={deleteNote} saveEdit={saveEdit}/>
           )
         })}
       </div>

@@ -4,60 +4,72 @@
   width: 800px;
 }
 
-.Form {
-  display: flex;
-  height: 50px;
-}
+  .Form {
+    display: flex;
+    height: 50px;
+  }
 
-.TextField {
-  flex-grow: 1;
-  font-size: larger;
-}
+  .TextField {
+    flex-grow: 1;
+    font-size: larger;
+  }
 
-.SubmitButton {
-  width: 80px;
-  font-size: larger;
-  color: black;
-}
+    .SubmitButton {
+      width: 80px;
+      font-size: larger;
+      color: black;
+    }
 
-#SubmitButton:active {
-  transform:scale(1.03);
-}
+    #SubmitButton:active {
+      transform:scale(1.03);
+    }
 
-.NoteWindow {
-  margin-top: 50px;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+  .NoteWindow {
+    margin-top: 50px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.Note {
-  display: flex;
-  align-items: center;
-  background-color:#F0ECE5;
-  height: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color:#31304D;
-}
+    .Note {
+      display: flex;
+      position: relative;
+      align-items: center;
+      background-color:#F0ECE5;
+      height: 50px;
+      padding-left: 10px;
+      padding-right: 10px;
+      color:#31304D;
+    }
 
-.Note p {
-  margin: 0px;
-  flex:auto;
-}
+      .TextArea {
+        display: flex;
+        position: relative;
+        margin: 0px;
+        padding: 0px;
+        flex: 1;
+        align-items: center;
+      }
 
-.DeleteIcon {
-  height: 60%;
-}
+      .EditBox {
+        position: absolute;
+        height: 30px;
+        width: 90%;
+      }
 
-.DeleteButton {
-  width: 20px;
-  height: 20px;
-  margin: 0px;
-  padding: 0px;
-}
+      .Note p {
+        margin: 0px;
+        flex:auto;
+      }
 
-.DeleteButton:active {
-  transform:scale(1.08);
-}
+      .Controls {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+        .Icon {
+          height: 60%;
+        }

@@ -1,17 +1,48 @@
+"use client"
+
 import styles from "./page.module.css";
-import { FunctionComponent as FC } from "react";
+import { ChangeEvent, EventHandler, FunctionComponent as FC, FormEvent } from "react";
+import { useState } from "react";
 
 type userNote = {
     id: number,
-    text: string
-    deleteNote: (id: number) => void;
+    text: string,
   }
 
-const  Note: FC<userNote> = ({id, text, deleteNote}) => {
+interface userNoteFull extends userNote {
+    deleteNote: (id: number) => void,
+    saveEdit: (e: userNote) => void
+}
+
+const  Note: FC<userNoteFull> = ({id, text, deleteNote, saveEdit}) => {
+    const [isEditable, setIsEditable] = useState<boolean>(false);
+    const [note, setNote] = useState<userNote>({
+        id: id,
+        text: text
+    });
+
+    const handleEditBoxChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setNote({
+            id: id,
+            text: event.currentTarget.value
+        });
+    }
+
+    const enableEdit = () => {
+        return isEditable === false ? setIsEditable(true) : null;
+    }
+
     return (
         <div className={styles.Note}>
-            <p>{text}</p>
-            <img src="../Delete.png" className={styles.DeleteIcon} onClick={() => deleteNote(id)}/>
+            <div className={styles.TextArea}>
+                <input type="text" value={note.text} className={styles.EditBox} onChange={handleEditBoxChange} hidden={!isEditable}/>
+                <p>{text}</p>
+            </div>
+            <div className={styles.Controls}>
+                <img src="../Edit.png" className={styles.Icon} onClick={() => enableEdit()} hidden={isEditable}/>
+                <img src="../Delete.png" className={styles.Icon} onClick={() => deleteNote(id)} hidden={isEditable}/>
+                <img src="../Save.png" className={styles.Icon} onClick={() => {saveEdit(note), setIsEditable(false)}} hidden={!isEditable}/>
+            </div>
         </div>
     )
 }
