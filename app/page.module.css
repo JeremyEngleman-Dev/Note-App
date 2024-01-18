@@ -1,6 +1,7 @@
 .app {
-  padding: 100px;
-  height: 100%;
+  padding-block: 60px;
+  padding-inline: 5%;
+  height: auto;
   width: 800px;
 }
 
