@@ -34,10 +34,6 @@ export default function Home() {
       return note.id === e.id ? {...note,text: e.text} : note;
     })
     setNotes(addEdit);
-/*     setNotes({
-      id: e.id,
-      text: e.text
-    }); */
   }
 
   return (

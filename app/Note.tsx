@@ -1,7 +1,7 @@
 "use client"
 
 import styles from "./page.module.css";
-import { ChangeEvent, EventHandler, FunctionComponent as FC, FormEvent } from "react";
+import { ChangeEvent, FunctionComponent as FC } from "react";
 import { useState } from "react";
 
 type userNote = {
